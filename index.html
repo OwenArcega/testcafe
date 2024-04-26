@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <h1>Formulario de registro</h1>
+    <form id="formulario" action="#">
+        <label for="nombre">Nombre</label><input id="nombre" type="text">
+        <label for="numeroCuenta">Numero de Cuenta</label><input id="numeroCuenta" type="number">
+        <label for="contrasena"></label>Contraseña<input id="contrasena" type="text">
+        <button id="submitBtn" type="submit">Enviar</button>
+    </form>
+    <p id="respuesta"></p>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            let usuarios = [];
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.addEventListener('click', (e)=>{
+                e.preventDefault();
+                const nombre = document.getElementById('nombre').value;
+                const numeroCuenta = document.getElementById('numeroCuenta').value;
+                const contrasena = document.getElementById('contrasena').value;
+
+                if(!!nombre || !!numeroCuenta || !!contrasena){
+                    usuarios.push(nombre);
+                    usuarios.push(numeroCuenta);
+                    usuarios.push(contrasena);
+
+                    const respuesta = document.getElementById('respuesta');
+                    let text = "";
+                    for(let i = 0; i < usuarios.length; i++){
+                        text += usuarios[i] + " ";
+                    }
+
+                    respuesta.innerText = text;
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>
